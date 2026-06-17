@@ -1,18 +1,23 @@
-from flask import Flask
+from flask import Flask, request
 
 app = Flask(__name__)
 
 @app.route("/")
 def home():
-    def check_even_odd(num):
-        return "Even" if num % 2 == 0 else "Odd"
+    num = request.args.get("num")
 
-    assert check_even_odd(2) == "Even"
-    assert check_even_odd(7) == "Odd"
-    assert check_even_odd(0) == "Even"
-    assert check_even_odd(-3) == "Odd"
+    if num is None:
+        return "Usage: /?num=10"
 
-    return "All tests passed!"
+    try:
+        num = int(num)
+    except ValueError:
+        return "Please provide a valid integer."
+
+    if num % 2 == 0:
+        return "Even"
+    else:
+        return "Odd"
 
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=10000)
