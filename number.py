@@ -1,4 +1,6 @@
-def add(a,b):
-    return a + b
-def sub(a,b):
-    return a-b
+num = int(input("Enter a number: "))
+
+if num % 2 == 0:
+    print("Even")
+else:
+    print("Odd")
