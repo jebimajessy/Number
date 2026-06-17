@@ -1,7 +1,9 @@
-from number import number
+def check_even_odd(num):
+    return "Even" if num % 2 == 0 else "Odd"
 
-def test_add():
-    assert add(2,3)==5
+assert check_even_odd(2) == "Even"
+assert check_even_odd(7) == "Odd"
+assert check_even_odd(0) == "Even"
+assert check_even_odd(-3) == "Odd"
 
-def test_sub():
-   assert sub(4,2)==2
+print("All tests passed!")
